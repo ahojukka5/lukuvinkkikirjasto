@@ -1,14 +1,14 @@
-package lukuvinkkikirjasto;
+package ui;
 
 import java.util.Scanner;
 
 /**
  * Text User Inferface
  */
-public class TUI {
+public class ConsoleUi {
     private final Scanner scanner;
 
-    public TUI(Scanner scanner) {
+    public ConsoleUi(Scanner scanner) {
         this.scanner = scanner;
     }
 
