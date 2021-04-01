@@ -8,3 +8,11 @@ Miniprojektin ohjeet: <https://ohjelmistotuotanto-hy-avoin.github.io/miniprojekt
 Arkkitehtuuri
 
 ![arkkitehtuuri](docs/arkkitehtuuri.jpg)
+
+## Käyttöohje
+
+Ohjelman suoritus gradlella:
+
+```bash
+./gradlew run
+```
