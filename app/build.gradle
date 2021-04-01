@@ -28,3 +28,7 @@ application {
     // Define the main class for the application.
     mainClass = 'lukuvinkkikirjasto.App'
 }
+
+run{
+    standardInput = System.in
+}
