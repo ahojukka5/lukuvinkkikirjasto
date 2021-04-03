@@ -22,6 +22,8 @@ public class JsonDao implements TipDao {
             for (Tip tip : tips) {
                 cache.create(tip);
             }
+
+            reader.close();
         } catch(Exception e) { }
     }
 
