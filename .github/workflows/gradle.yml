@@ -19,3 +19,5 @@ jobs:
       run: chmod +x gradlew
     - name: Test with Gradle
       run: ./gradlew build jacocoTestReport coveralls
+      env:
+        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
