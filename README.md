@@ -5,7 +5,9 @@ Product backlog:
 
 Miniprojektin ohjeet: <https://ohjelmistotuotanto-hy-avoin.github.io/miniprojekti/>
 
-Arkkitehtuuri
+Aiheen kuvaus: <https://ohjelmistotuotanto-hy-avoin.github.io/speksi/>
+
+## Arkkitehtuuri
 
 ![arkkitehtuuri](docs/arkkitehtuuri.jpg)
 
