@@ -1,5 +1,8 @@
 # Lukuvinkkikirjasto
 
+[![Continuous Integration][ci-img]][ci-url]
+[![Coverage Status][coverage-img]][coverage-url]
+
 Product backlog:
 <https://docs.google.com/spreadsheets/d/1zUi1pc9pQ-kz11Bn88Q34mbKgrZqrk1Bsj93MvS5I70/edit#gid=1>
 
@@ -58,3 +61,9 @@ Url: https://dev.to/napicellatwit/consistency-models-52l
 ### Ohjelmasta poistuminen
 
 Ohjelmasta poistuminen tapahtuu kirjoittamalla `quit`.
+
+[ci-img]: https://github.com/ahojukka5/lukuvinkkikirjasto/actions/workflows/gradle.yml/badge.svg
+[ci-url]: https://github.com/ahojukka5/lukuvinkkikirjasto/actions?query=workflow%3ACI+branch%3Amaster
+
+[coverage-img]: https://coveralls.io/repos/github/ahojukka5/lukuvinkkikirjasto/badge.svg?branch=master
+[coverage-url]: https://coveralls.io/github/ahojukka5/lukuvinkkikirjasto?branch=master
