@@ -9,6 +9,17 @@ Arkkitehtuuri
 
 ![arkkitehtuuri](docs/arkkitehtuuri.jpg)
 
+## Definition of done
+
+Scrumin määrittelyn mukainen definition of done sisältää:
+
+- user storyn määrittelyn,
+- suunnittelun,
+- toteutuksen,
+- automatisoitujen testien tekemisen,
+- integroinnin muuhun sovellukseen,
+- dokumentoinnin.
+
 ## Käyttöohje
 
 Ohjelman suoritus gradlella:
