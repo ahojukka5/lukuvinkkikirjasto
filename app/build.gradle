@@ -20,6 +20,10 @@ repositories {
 }
 
 dependencies {
+    // Use Cucumber
+    testImplementation 'io.cucumber:cucumber-java:6.8.1'
+    testImplementation 'io.cucumber:cucumber-junit:6.8.1'
+
     // Use JUnit test framework.
     testImplementation 'junit:junit:4.13'
 
@@ -30,6 +34,8 @@ dependencies {
 }
 
 test {
+    testLogging.showStandardStreams = true
+
     finalizedBy jacocoTestReport // report is always generated after tests run
 }
 
