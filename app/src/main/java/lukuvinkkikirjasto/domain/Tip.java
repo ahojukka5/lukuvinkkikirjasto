@@ -22,4 +22,17 @@ public class Tip {
     public String getUrl() {
         return url;
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (!(other instanceof Tip)) {
+            return false;
+        }
+
+        Tip rhs = (Tip) other;
+
+        return this.id == rhs.id
+            && this.title.equals(rhs.title)
+            && this.url.equals(rhs.url);
+    }
 }
