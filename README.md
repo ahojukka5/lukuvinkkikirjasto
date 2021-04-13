@@ -25,9 +25,9 @@ Scrumin määrittelyn mukainen definition of done sisältää:
 - integroinnin muuhun sovellukseen,
 - dokumentoinnin.
 
-## Käyttöohje
+## Asennus- ja käyttöohje
 
-Ohjelman suoritus gradlella:
+Ohjelman riippuvuuksien asennus ja ohjelman suoritus tapahtuu gradlella:
 
 ```bash
 ./gradlew run
@@ -64,6 +64,5 @@ Ohjelmasta poistuminen tapahtuu kirjoittamalla `quit`.
 
 [ci-img]: https://github.com/ahojukka5/lukuvinkkikirjasto/actions/workflows/gradle.yml/badge.svg
 [ci-url]: https://github.com/ahojukka5/lukuvinkkikirjasto/actions?query=workflow%3ACI+branch%3Amaster
-
 [coverage-img]: https://coveralls.io/repos/github/ahojukka5/lukuvinkkikirjasto/badge.svg?branch=master
 [coverage-url]: https://coveralls.io/github/ahojukka5/lukuvinkkikirjasto?branch=master
