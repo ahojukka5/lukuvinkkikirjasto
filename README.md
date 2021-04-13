@@ -30,7 +30,7 @@ Scrumin määrittelyn mukainen definition of done sisältää:
 Ohjelman riippuvuuksien asennus ja ohjelman suoritus tapahtuu gradlella:
 
 ```bash
-./gradlew run
+./gradlew run --console=plain
 ```
 
 Ohjelmassa on tekstikäyttöliittymä. Kun ohjelman käynnistää, se listaa eri komennot. Vaihtoehdot ovat
