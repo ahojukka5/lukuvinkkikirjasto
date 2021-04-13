@@ -50,6 +50,11 @@ public class Stepdefs {
         inputLines.add("add");
     }
 
+    @Given("^command list is selected$")
+    public void commandListSelected() throws Throwable {
+        inputLines.add("list");
+    }
+
     @When("title {string} and url {string} are entered")
     public void titleAndUrlAreEntered(String title, String url) {
         inputLines.add(title);
