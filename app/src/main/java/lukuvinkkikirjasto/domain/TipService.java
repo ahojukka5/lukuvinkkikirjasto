@@ -11,7 +11,7 @@ public class TipService {
     }
 
     public void createTip(String title, String url) {
-        int id = 123; // hox
+        int id = tipDao.getAll().size() + 1;
         Tip tip = new Tip(id, title, url);
         tipDao.create(tip);
     }
