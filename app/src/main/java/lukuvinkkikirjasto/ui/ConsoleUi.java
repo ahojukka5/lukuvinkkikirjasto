@@ -21,6 +21,7 @@ public class ConsoleUi {
         while (true) {
             System.out.println("Komennot:");
             System.out.println("add - lisää vinkki");
+            System.out.println("remove - poista vinkki");
             System.out.println("list - listaa vinkit");
             System.out.println("quit - lopettaa");
             String cmd = scanner.nextLine();
@@ -40,6 +41,20 @@ public class ConsoleUi {
                     System.out.println("\nId: " + tip.getId());
                     System.out.println("Otsikko: " + tip.getTitle());
                     System.out.println("Url: " + tip.getUrl() + "\n");
+                }
+                break;
+            case "remove":
+                for (Tip tip : tipService.getAll()) {
+                    System.out.println(String.format("%3d %s", tip.getId(), tip.getTitle()));
+                }
+                System.out.println("Valitse id-numero:");
+                Integer id = Integer.parseInt(scanner.nextLine());
+                // Tip tip = tipService.findTipById(id); // TODO
+                System.out.println("Poistetaanko vinkki id-numerolla " + id + "? [y/n]");
+                String answer = scanner.nextLine();
+                if (answer.equals("y")) {
+                    // tipService.removeTip(tip); // TODO
+                    System.out.println("Vinkki " + id + " poistettu!");
                 }
                 break;
             case "quit":
