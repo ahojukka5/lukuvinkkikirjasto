@@ -49,11 +49,15 @@ public class ConsoleUi {
                 }
                 System.out.println("Valitse id-numero:");
                 Integer id = Integer.parseInt(scanner.nextLine());
-                // Tip tip = tipService.findTipById(id); // TODO
-                System.out.println("Poistetaanko vinkki id-numerolla " + id + "? [y/n]");
+                Tip tip = tipService.findTipById(id);
+                if (tip == null) {
+                    System.out.println("Vinkkiä id-numerolla " + id + " ei löytynyt!");
+                    break;
+                }
+                System.out.println("Poistetaanko vinkki id-numerolla " + tip.getId() + "ja otsikolla '" + tip.getTitle() + "'? [k/e]");
                 String answer = scanner.nextLine();
-                if (answer.equals("y")) {
-                    // tipService.removeTip(tip); // TODO
+                if (answer.equals("k")) {
+                    tipService.removeTip(tip);
                     System.out.println("Vinkki " + id + " poistettu!");
                 }
                 break;
