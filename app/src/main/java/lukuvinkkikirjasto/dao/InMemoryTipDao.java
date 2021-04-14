@@ -19,4 +19,19 @@ public class InMemoryTipDao implements TipDao {
     public List<Tip> getAll() {
         return tips;
     }
+
+    @Override
+    public void remove(Tip tip) {
+        tips.remove(tip);
+    }
+
+    @Override
+    public Tip findById(Integer id) {
+        for (Tip tip : tips) {
+            if (tip.getId() == id) {
+                return tip;
+            }
+        }
+        return null;
+    }
 }

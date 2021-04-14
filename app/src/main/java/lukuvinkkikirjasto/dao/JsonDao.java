@@ -38,13 +38,26 @@ public class JsonDao implements TipDao {
         String data = new Gson().toJson(tips);
         fileSystem.write(fileName, data);
     }
-
+    
+    @Override
     public void create(Tip tip) {
         cache.create(tip);
         save();
     }
 
+    @Override
     public List<Tip> getAll() {
         return cache.getAll();
+    }
+
+    @Override
+    public void remove(Tip tip) {
+        cache.remove(tip);
+        save();
+    }
+
+    @Override
+    public Tip findById(Integer id) {
+        return cache.findById(id);
     }
 }
