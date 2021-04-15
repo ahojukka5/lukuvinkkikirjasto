@@ -58,6 +58,23 @@ Otsikko: Consistency models
 Url: https://dev.to/napicellatwit/consistency-models-52l
 ```
 
+### Vinkkien poistaminen
+
+Vinkkien poistaminen tapahtuu kirjoittamalla `remove`. Ohjelma listaa
+tietokannassa olevat lukuvinkit. Tämän jälkeen valitaan sen lukuvinkin id-numero
+joka halutaan poistaa ja varmistuksen jälkeen vinkki poistuu tietokannasta.
+
+```text
+remove
+  1 Merge sort algorithm
+  2 Consistency models
+Valitse id-numero:
+1
+Poistetaanko vinkki id-numerolla 1 ja otsikolla 'Merge sort algorithm'? [k/e]
+k
+Vinkki 1 poistettu!
+```
+
 ### Ohjelmasta poistuminen
 
 Ohjelmasta poistuminen tapahtuu kirjoittamalla `quit`.
