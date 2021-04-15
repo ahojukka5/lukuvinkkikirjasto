@@ -35,7 +35,7 @@ public class JsonDao implements TipDao {
         } catch (Exception e) { }
     }
 
-    private void save() {
+    void save() {
         StoredData db = new StoredData();
         db.tips = cache.tips;
         db.id = cache.id;
