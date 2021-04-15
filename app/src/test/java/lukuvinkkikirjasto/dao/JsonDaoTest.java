@@ -27,7 +27,7 @@ public class JsonDaoTest {
         provider = new FakeFilesystemProvider();
         dao = new JsonDao(PATH, provider);
 
-        provider.setContent("[{\"id\": 1, \"title\": \"aa\", \"url\": \"example.com\"}]");
+        provider.setContent("{\"tips\":[{\"id\": 1, \"title\": \"aa\", \"url\": \"example.com\"}],\"id\":0}");
         dao = new JsonDao(PATH, provider);
         Tip tip = new Tip(1, "aa", "example.com");
         assertTrue(dao.getAll().contains(tip));

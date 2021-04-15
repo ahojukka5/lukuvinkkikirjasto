@@ -25,17 +25,22 @@ public class JsonDao implements TipDao {
     private void open() {
         try {
             String data = fileSystem.read(fileName);
-            Tip[] tips = new Gson().fromJson(data, Tip[].class);
+            StoredData db = new Gson().fromJson(data, StoredData.class);
 
-            for (Tip tip : tips) {
+            for (Tip tip : db.tips) {
                 cache.create(tip);
             }
-        } catch(Exception e) { }
+
+            cache.id = db.id;
+        } catch (Exception e) { }
     }
 
     private void save() {
-        List<Tip> tips = cache.getAll();
-        String data = new Gson().toJson(tips);
+        StoredData db = new StoredData();
+        db.tips = cache.tips;
+        db.id = cache.id;
+
+        String data = new Gson().toJson(db);
         fileSystem.write(fileName, data);
     }
 
