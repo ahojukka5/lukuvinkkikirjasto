@@ -54,7 +54,8 @@ public class ConsoleUi {
                     System.out.println("Vinkkiä id-numerolla " + id + " ei löytynyt!");
                     break;
                 }
-                System.out.println("Poistetaanko vinkki id-numerolla " + tip.getId() + "ja otsikolla '" + tip.getTitle() + "'? [k/e]");
+                String msg = "Poistetaanko vinkki id-numerolla %d ja otsikolla '%s'? [k/e]";
+                System.out.println(String.format(msg, tip.getId(), tip.getTitle()));
                 String answer = scanner.nextLine();
                 if (answer.equals("k")) {
                     tipService.removeTip(tip);
