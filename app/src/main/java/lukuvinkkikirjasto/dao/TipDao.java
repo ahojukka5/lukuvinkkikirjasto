@@ -8,6 +8,8 @@ public interface TipDao {
 
     void remove(Tip tip);
 
+    void update(Tip tip);
+
     Tip findById(Integer id);
 
     List<Tip> getAll();

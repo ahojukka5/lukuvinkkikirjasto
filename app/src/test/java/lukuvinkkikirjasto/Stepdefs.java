@@ -71,4 +71,26 @@ public class Stepdefs {
 
         assertTrue(outContent.toString().contains(expectedOutput));
     }
+
+    @Given("tip with title {string} and url {string} is created")
+    public void tipWithTitleAndUrlIsCreated(String title, String url) {
+        inputLines.add("add");
+        inputLines.add("title");
+        inputLines.add("url");
+    }
+
+    @Given("command markRead is selected$")
+    public void commandMarkReadSelected() {
+        inputLines.add("markRead");
+    }
+
+    @When("id {string} is entered")
+    public void idIsEntered(String id) {
+        inputLines.add(id);
+    }
+
+    @When("operation is confirmed")
+    public void operationIsConfirmed() {
+        inputLines.add("k");
+    }
 }
