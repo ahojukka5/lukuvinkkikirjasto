@@ -63,6 +63,7 @@ public class Stepdefs {
 
     @Then("system will respond with {string}")
     public void systemWillRespondWith(String expectedOutput) {
+        inputLines.add("menu");
         inputLines.add("quit");
         Scanner scanner = new Scanner(join(inputLines));
         TipService tipService = new TipService(new JsonDao("test.txt"));
