@@ -65,4 +65,10 @@ public class JsonDao implements TipDao {
     public Tip findById(Integer id) {
         return cache.findById(id);
     }
+
+    @Override
+    public void update(Tip tip) {
+        cache.update(tip);
+        save();
+    }
 }

@@ -28,4 +28,8 @@ public class TipService {
     public void removeTip(Tip tip) {
         tipDao.remove(tip);
     }
+
+    public void updateTip(Tip tip) {
+        tipDao.update(tip);
+    }
 }
