@@ -81,6 +81,9 @@ public class Stepdefs {
         assertTrue(outContent.toString().contains(expectedOutput));
     }
 
+    /**
+     * Check that console is giving expected filtered results.
+     */
     @Then("filtered results should contain {string} but not {string}")
     public void filteredShouldContain(String expectedOutput, String notExpectedOutput) {
         inputLines.add("menu");
@@ -93,7 +96,7 @@ public class Stepdefs {
         String allContents = outContent.toString();
         String[] parts = allContents.split("Mitä otsikon täytyy sisältää?");
 
-        String contentsAfterFilter = parts[parts.length-1];
+        String contentsAfterFilter = parts[parts.length - 1];
 
         assertTrue(contentsAfterFilter.toString().contains(expectedOutput));
         assertFalse(contentsAfterFilter.toString().contains(notExpectedOutput));
