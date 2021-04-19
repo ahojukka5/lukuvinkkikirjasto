@@ -1,6 +1,10 @@
 package lukuvinkkikirjasto.domain.matcher;
+
 import lukuvinkkikirjasto.domain.Tip;
 
+/**
+ * And matcher.
+ */
 public class And implements Matcher {
     private Matcher[] matchers;
 
