@@ -1,14 +1,24 @@
 package lukuvinkkikirjasto.domain;
 
+import java.time.*; // handle dates somewhere else?
 import java.util.*;
 import java.util.stream.*;
-import java.time.*; // handle dates somewhere else?
 
+/**
+ * Tip class.
+ */
 public class Tip {
     private int id;
     private Map<String, String> data;
     private Set<String> tags;
 
+    /**
+     * Initialize new Tip object.
+     *
+     * @param id id of tip
+     * @param title title of tip
+     * @param url url of tip
+     */
     public Tip(int id, String title, String url) {
         this.id = id;
         this.data = new HashMap<>();

@@ -1,12 +1,16 @@
 package lukuvinkkikirjasto.dao;
 
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+
 import com.google.gson.Gson;
 import java.util.*;
 import lukuvinkkikirjasto.domain.Tip;
 import org.junit.*;
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
 
+/**
+ * Tests for Json DAO.
+ */
 public class JsonDaoTest {
     FakeFilesystemProvider provider;
     JsonDao dao;
@@ -22,10 +26,12 @@ public class JsonDaoTest {
         assertTrue(dao.getAll().contains(tip));
     }
 
+    @SuppressWarnings("checkstyle:LineLength")
     @Test
     public void loadFromFile() {
         provider = new FakeFilesystemProvider();
-        provider.setContent("{\"tips\":[{\"id\":1,\"data\":{\"title\":\"aa\",\"url\":\"example.com\"},\"tags\":[]}],\"id\":0}");
+        String content = "{\"tips\":[{\"id\":1,\"data\":{\"title\":\"aa\",\"url\":\"example.com\"},\"tags\":[]}],\"id\":0}";
+        provider.setContent(content);
         dao = new JsonDao(PATH, provider);
         Tip tip = new Tip(1, "aa", "example.com");
         assertTrue(dao.getAll().contains(tip));

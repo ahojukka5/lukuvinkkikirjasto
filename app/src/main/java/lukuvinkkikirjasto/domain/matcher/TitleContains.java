@@ -1,6 +1,10 @@
 package lukuvinkkikirjasto.domain.matcher;
+
 import lukuvinkkikirjasto.domain.Tip;
 
+/**
+ * TitleContains matcher.
+ */
 public class TitleContains implements Matcher {
     private String query;
 

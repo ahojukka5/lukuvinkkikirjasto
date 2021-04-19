@@ -1,8 +1,11 @@
-// tämä luokka on vain alkuun pääsemiseen, oikeasti käytettävä json-talennusta
 package lukuvinkkikirjasto.dao;
+
 import java.util.*;
 import lukuvinkkikirjasto.domain.Tip;
 
+/**
+ * In-memory tip DAO.
+ */
 public class InMemoryTipDao implements TipDao {
     List<Tip> tips;
     int id;
