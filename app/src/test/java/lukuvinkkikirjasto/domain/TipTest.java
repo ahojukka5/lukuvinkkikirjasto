@@ -1,9 +1,13 @@
 package lukuvinkkikirjasto.domain;
 
-import org.junit.Test;
 import static org.junit.Assert.*;
-import java.util.*;
 
+import java.util.*;
+import org.junit.Test;
+
+/**
+ * Unit tests for Tip.
+ */
 public class TipTest {
 
     @Test
