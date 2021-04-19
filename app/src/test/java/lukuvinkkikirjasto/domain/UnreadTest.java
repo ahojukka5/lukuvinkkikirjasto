@@ -7,21 +7,24 @@ import lukuvinkkikirjasto.domain.Tip;
 import lukuvinkkikirjasto.domain.matcher.*;
 import org.junit.*;
 
+/**
+ * Unit tests for unread matcher.
+ */
 public class UnreadTest {
-	@Test
-	public void matchesUnreadTip() {
-		Tip tip = new Tip(0, "a", "b");
+    @Test
+    public void matchesUnreadTip() {
+        Tip tip = new Tip(0, "a", "b");
 
-		Matcher match = new Unread();
-		assertTrue(match.matches(tip));
-	}
+        Matcher match = new Unread();
+        assertTrue(match.matches(tip));
+    }
 
-	@Test
-	public void matchFailsOnUnread() {
-		Tip tip = new Tip(0, "a", "b");
-		tip.markRead();
+    @Test
+    public void matchFailsOnUnread() {
+        Tip tip = new Tip(0, "a", "b");
+        tip.markRead();
 
-		Matcher match = new Unread();
-		assertFalse(match.matches(tip));
-	}
+        Matcher match = new Unread();
+        assertFalse(match.matches(tip));
+    }
 }

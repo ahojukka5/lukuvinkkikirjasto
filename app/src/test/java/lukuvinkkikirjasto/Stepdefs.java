@@ -139,6 +139,9 @@ public class Stepdefs {
         inputLines.add(filter);
     }
 
+    /**
+     * Mark specified tip as read given the program is in main menu.
+     */
     @Given("tip with id {string} is marked read")
     public void markTipRead(String id) {
         inputLines.add("markread");
@@ -161,6 +164,9 @@ public class Stepdefs {
         inputLines.add("unread");
     }
 
+    /**
+     * Run program and count how many lines contain specified string.
+     */
     @Then("output has line with text {string} {int} times")
     public void outputHasCountOfString(String s, int count) {
         inputLines.add("menu");
