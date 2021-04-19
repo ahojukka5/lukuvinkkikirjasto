@@ -7,8 +7,9 @@ class FilesystemWrapper implements FilesystemProvider {
     public String read(String path) {
         try {
             return new BufferedReader(new FileReader(path)).lines().collect(Collectors.joining(""));
-        } catch(Exception e) { }
-        return "";
+        } catch (Exception e) {
+            return "";
+        }
     }
 
     @Override
@@ -17,6 +18,8 @@ class FilesystemWrapper implements FilesystemProvider {
             FileWriter writer = new FileWriter(path);
             writer.write(data);
             writer.close();
-        } catch(Exception e) { }
+        } catch (Exception e) {
+            return;
+        }
     }
 }
