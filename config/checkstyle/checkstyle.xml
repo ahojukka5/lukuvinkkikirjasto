@@ -32,6 +32,9 @@
         <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://" />
     </module>
 
+    <!-- https://stackoverflow.com/questions/4023185/how-to-disable-a-particular-checkstyle-rule-for-a-particular-line-of-code -->
+    <module name="SuppressWarningsFilter" />
+
     <module name="TreeWalker">
         <module name="OuterTypeFilename" />
         <module name="IllegalTokenText">
@@ -295,5 +298,6 @@
             <property name="file" value="${org.checkstyle.google.suppressionxpathfilter.config}" default="checkstyle-xpath-suppressions.xml" />
             <property name="optional" value="true" />
         </module>
+        <module name="SuppressWarningsHolder" />
     </module>
 </module>
