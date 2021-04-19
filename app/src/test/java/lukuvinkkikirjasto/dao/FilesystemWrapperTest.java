@@ -1,8 +1,12 @@
 package lukuvinkkikirjasto.dao;
 
-import org.junit.*;
 import static org.junit.Assert.*;
 
+import org.junit.*;
+
+/**
+ * Tests for file system wrapper.
+ */
 public class FilesystemWrapperTest {
     FilesystemWrapper wrapper;
     static String PATH = "test.txt";
