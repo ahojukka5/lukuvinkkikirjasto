@@ -1,13 +1,22 @@
 package lukuvinkkikirjasto.dao;
+
 import com.google.gson.Gson;
 import java.util.*;
 import lukuvinkkikirjasto.domain.Tip;
 
+/**
+ * Json DAO.
+ */
 public class JsonDao implements TipDao {
     InMemoryTipDao cache;
     String fileName;
     FilesystemProvider fileSystem;
 
+    /**
+     * Initialize a new JsonDao object.
+     *
+     * @param fileName name of database file
+     */
     public JsonDao(String fileName) {
         cache = new InMemoryTipDao();
         this.fileName = fileName;
@@ -32,7 +41,9 @@ public class JsonDao implements TipDao {
             }
 
             cache.id = db.id;
-        } catch (Exception e) { }
+        } catch (Exception e) {
+            return;
+        }
     }
 
     void save() {
@@ -43,7 +54,7 @@ public class JsonDao implements TipDao {
         String data = new Gson().toJson(db);
         fileSystem.write(fileName, data);
     }
-    
+
     @Override
     public void create(Tip tip) {
         cache.create(tip);
