@@ -3,7 +3,7 @@ package lukuvinkkikirjasto.dao;
 import java.util.*;
 import lukuvinkkikirjasto.domain.Tip;
 
-class InMemoryTipDao implements TipDao {
+public class InMemoryTipDao implements TipDao {
     List<Tip> tips;
     int id;
 
