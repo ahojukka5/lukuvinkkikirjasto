@@ -87,8 +87,8 @@ public class Stepdefs {
     @Given("tip with title {string} and url {string} is created")
     public void tipWithTitleAndUrlIsCreated(String title, String url) {
         inputLines.add("add");
-        inputLines.add("title");
-        inputLines.add("url");
+        inputLines.add(title);
+        inputLines.add(url);
     }
 
     @Given("command markRead is selected$")
