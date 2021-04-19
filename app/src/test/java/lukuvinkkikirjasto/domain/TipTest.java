@@ -13,9 +13,9 @@ public class TipTest {
     @Test
     public void testCanCreateTip() {
         Tip tip = new Tip(1, "otsikko", "www.otsikko.com");
-        assertEquals(tip.getId(), 1);
-        assertEquals(tip.getTitle(), "otsikko");
-        assertEquals(tip.getUrl(), "www.otsikko.com");
+        assertEquals(1, tip.getId());
+        assertEquals("otsikko", tip.getTitle());
+        assertEquals("www.otsikko.com", tip.getUrl());
     }
 
     @Test
@@ -80,7 +80,7 @@ public class TipTest {
     public void canAddFields() {
         Tip tip = new Tip(1, "a", "b");
         tip.setValue("some", "value");
-        assertEquals(tip.getValue("some"), "value");
+        assertEquals("value", tip.getValue("some"));
     }
 
     @Test

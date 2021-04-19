@@ -52,7 +52,7 @@ public class JsonDaoTest {
         provider = new FakeFilesystemProvider();
         provider.setContent("{\"tips\":[],\"id\":42}");
         dao = new JsonDao(PATH, provider);
-        assertEquals(dao.cache.id, 42);
+        assertEquals(42, dao.cache.id);
     }
 
     @Test
@@ -63,7 +63,7 @@ public class JsonDaoTest {
         dao.save();
 
         dao = new JsonDao(PATH, provider);
-        assertEquals(dao.cache.id, 33);
+        assertEquals(33, dao.cache.id);
     }
 
     @Test

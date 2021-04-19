@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Scanner;
 import lukuvinkkikirjasto.domain.*;
 import lukuvinkkikirjasto.domain.matcher.Matcher;
+import lukuvinkkikirjasto.domain.matcher.Read;
 import lukuvinkkikirjasto.domain.matcher.TitleContains;
+import lukuvinkkikirjasto.domain.matcher.Unread;
 
 /**
  * Text User Inferface.
@@ -84,9 +86,9 @@ public class ConsoleUi {
         String okMsg = "Vinkki %d merkitty luetuksi!";
 
         System.out.println("Lukemattomat vinkit:");
-        tipService.getAll().stream().filter(tip -> !tip.isRead()).forEach(tip -> {
+        for (Tip tip : tipService.matches(new Unread())) {
             System.out.println(tip.getId() + ": " + tip.getTitle());
-        });
+        }
 
         System.out.println("\nSyötä luetuksi merkattavan vinkin id:");
         String input = scanner.nextLine();
@@ -117,19 +119,32 @@ public class ConsoleUi {
             for (Tip tip : tipService.matchesAll(filters)) {
                 System.out.println("\nId: " + tip.getId());
                 System.out.println("Otsikko: " + tip.getTitle());
-                System.out.println("Url: " + tip.getUrl() + "\n");
+                System.out.println("Url: " + tip.getUrl());
+                if (tip.isRead()) {
+                    System.out.println("Luettu: " + tip.getReadDate());
+                }
+
+                System.out.println('\n');
             }
             System.out.println("Komennot:");
             System.out.println("title - suodata otsikon perusteella");
+            System.out.println("read - suodata luetut");
+            System.out.println("unread - suodata lukemattomat");
             System.out.println("clear - tyhjennä suodatukset " + filters.toString());
             System.out.println("menu - takaisin päävalikkoon");
 
-            String cmd = scanner.nextLine();
+            String cmd = scanner.nextLine().trim();
             switch (cmd) {
             case "title":
                 System.out.println("Mitä otsikon täytyy sisältää?");
-                String titleFilter = scanner.nextLine();
+                String titleFilter = scanner.nextLine().trim();
                 filters.add(new TitleContains(titleFilter));
+                break;
+            case "read":
+                filters.add(new Read());
+                break;
+            case "unread":
+                filters.add(new Unread());
                 break;
             case "clear":
                 filters.clear();

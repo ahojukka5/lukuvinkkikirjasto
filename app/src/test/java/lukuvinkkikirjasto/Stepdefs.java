@@ -127,6 +127,8 @@ public class Stepdefs {
         inputLines.add("k");
     }
 
+    
+
     @Given("command title is selected$")
     public void commandFilterSelected() {
         inputLines.add("title");
@@ -137,4 +139,49 @@ public class Stepdefs {
         inputLines.add(filter);
     }
 
+    /**
+     * Mark specified tip as read given the program is in main menu.
+     */
+    @Given("tip with id {string} is marked read")
+    public void markTipRead(String id) {
+        inputLines.add("markread");
+        inputLines.add(id);
+        inputLines.add("k");
+    }
+
+    @Given("list mode is selected")
+    public void selectListMode() {
+        inputLines.add("list");
+    }
+
+    @When("user filters by read tips")
+    public void filterByReadTips() {
+        inputLines.add("read");
+    }
+
+    @When("user filters by unread tips")
+    public void filterByUnreadTips() {
+        inputLines.add("unread");
+    }
+
+    /**
+     * Run program and count how many lines contain specified string.
+     */
+    @Then("output has line with text {string} {int} times")
+    public void outputHasCountOfString(String s, int count) {
+        inputLines.add("menu");
+        inputLines.add("quit");
+        Scanner scanner = new Scanner(join(inputLines));
+        TipService tipService = new TipService(new JsonDao("test.txt"));
+
+        new ConsoleUi(scanner, tipService).start();
+
+        for (String line : outContent.toString().split("\n")) {
+            if (line.contains(s)) {
+                count--;
+            }
+        }
+
+        assertEquals(0, count);
+    }
 }
