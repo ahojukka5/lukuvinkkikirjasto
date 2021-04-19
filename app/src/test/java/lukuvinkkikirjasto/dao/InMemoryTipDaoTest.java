@@ -1,10 +1,14 @@
 package lukuvinkkikirjasto.dao;
 
-import org.junit.*;
 import static org.junit.Assert.*;
-import lukuvinkkikirjasto.domain.Tip;
-import java.util.*;
 
+import java.util.*;
+import lukuvinkkikirjasto.domain.Tip;
+import org.junit.*;
+
+/**
+ * Tests for in-memory tip DAO.
+ */
 public class InMemoryTipDaoTest {
     InMemoryTipDao dao;
 
