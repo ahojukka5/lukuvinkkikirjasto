@@ -35,4 +35,11 @@ public class InMemoryTipDao implements TipDao {
         }
         return null;
     }
+
+    @Override
+    public void update(Tip tip) {
+        Tip old = findById(tip.getId());
+        remove(old);
+        create(tip);
+    }
 }

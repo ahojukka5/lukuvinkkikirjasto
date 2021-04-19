@@ -24,8 +24,9 @@ public class ConsoleUi {
             System.out.println("add - lisää vinkki");
             System.out.println("remove - poista vinkki");
             System.out.println("list - listaa ja suodata vinkkejä");
+            System.out.println("markRead - merkitse vinkki luetuksi");
             System.out.println("quit - lopettaa");
-            String cmd = scanner.nextLine();
+            String cmd = scanner.nextLine().trim().toLowerCase();
             switch (cmd) {
             case "add":
                 System.out.println("Otsikko?");
@@ -58,14 +59,46 @@ public class ConsoleUi {
                     tipService.removeTip(tip);
                     System.out.println("Vinkki " + id + " poistettu!");
                 }
+            case "markread":
+                markRead();
                 break;
             case "quit":
                 return;
             default:
                 System.out.println("Komentoa '" + cmd + "' ei ole");
             }
-            
+        }
+    }
 
+    public void markRead() {
+        String confirmMsg = "Merkitäänkö vinkki id-numerolla %d ja otsikolla '%s' luetuksi? [k/e]";
+        String errMsg = "Vinkkiä id-numerolla '%s' ei löytynyt!";
+        String okMsg = "Vinkki %d merkitty luetuksi!";
+
+        System.out.println("Lukemattomat vinkit:");
+        tipService.getAll().stream().filter(tip -> !tip.isRead()).forEach(tip -> {
+            System.out.println(tip.getId() + ": " + tip.getTitle());
+        });
+
+        System.out.println("\nSyötä luetuksi merkattavan vinkin id:");
+        String input = scanner.nextLine();
+        Tip tip = null;
+        int id = 0;
+
+        try {
+            id = Integer.parseInt(input);
+            tip = tipService.findTipById(id);
+            System.out.println(String.format(confirmMsg, tip.getId(), tip.getTitle()));
+        } catch (Exception e) {
+            System.out.println(String.format(errMsg, input));
+            return;
+        }
+
+        input = scanner.nextLine().trim().toLowerCase();
+        if (input.equals("k")) {
+            tip.markRead();
+            tipService.updateTip(tip);
+            System.out.println(String.format(okMsg, id));
         }
     }
 
