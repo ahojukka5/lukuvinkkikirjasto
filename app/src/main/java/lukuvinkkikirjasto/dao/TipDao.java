@@ -3,6 +3,9 @@ package lukuvinkkikirjasto.dao;
 import java.util.List;
 import lukuvinkkikirjasto.domain.Tip;
 
+/**
+ * Interface for tip DAO.
+ */
 public interface TipDao {
     void create(Tip tip);
 
