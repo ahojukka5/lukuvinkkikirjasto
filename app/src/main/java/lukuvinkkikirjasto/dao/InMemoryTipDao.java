@@ -45,4 +45,9 @@ public class InMemoryTipDao implements TipDao {
         remove(old);
         create(tip);
     }
+
+    @Override
+    public int nextId() {
+        return id++;
+    }
 }

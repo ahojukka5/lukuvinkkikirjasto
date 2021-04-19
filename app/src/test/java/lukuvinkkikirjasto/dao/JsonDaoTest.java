@@ -65,4 +65,12 @@ public class JsonDaoTest {
         dao = new JsonDao(PATH, provider);
         assertEquals(dao.cache.id, 33);
     }
+
+    @Test
+    public void idQueryTest() {
+        provider = new FakeFilesystemProvider();
+        dao = new JsonDao(PATH, provider);
+        assertEquals(0, dao.nextId());
+        assertEquals(1, dao.nextId());
+    }
 }

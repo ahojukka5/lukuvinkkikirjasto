@@ -82,4 +82,9 @@ public class JsonDao implements TipDao {
         cache.update(tip);
         save();
     }
+
+    @Override
+    public int nextId() {
+        return cache.nextId();
+    }
 }

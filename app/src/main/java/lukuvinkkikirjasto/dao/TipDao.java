@@ -16,4 +16,6 @@ public interface TipDao {
     Tip findById(Integer id);
 
     List<Tip> getAll();
+
+    int nextId();
 }
