@@ -1,11 +1,16 @@
 package lukuvinkkikirjasto.domain;
 
-import org.junit.*;
 import static org.junit.Assert.*;
+
+import java.util.*;
 import lukuvinkkikirjasto.dao.InMemoryTipDao;
 import lukuvinkkikirjasto.domain.Tip;
 import lukuvinkkikirjasto.domain.matcher.*;
-import java.util.*;
+import org.junit.*;
+
+/**
+ * Unit tests for TipService.
+ */
 public class TipServiceTest {
     private TipService tipService;
     private InMemoryTipDao dao;
