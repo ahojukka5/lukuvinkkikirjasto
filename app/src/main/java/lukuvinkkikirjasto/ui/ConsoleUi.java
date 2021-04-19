@@ -86,9 +86,9 @@ public class ConsoleUi {
         String okMsg = "Vinkki %d merkitty luetuksi!";
 
         System.out.println("Lukemattomat vinkit:");
-        tipService.getAll().stream().filter(tip -> !tip.isRead()).forEach(tip -> {
+        for (Tip tip : tipService.matches(new Unread())) {
             System.out.println(tip.getId() + ": " + tip.getTitle());
-        });
+        }
 
         System.out.println("\nSyötä luetuksi merkattavan vinkin id:");
         String input = scanner.nextLine();
