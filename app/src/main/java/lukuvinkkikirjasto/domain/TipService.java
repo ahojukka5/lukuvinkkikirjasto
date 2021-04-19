@@ -25,7 +25,7 @@ public class TipService {
      * @param url url of tip
      */
     public void createTip(String title, String url) {
-        int id = tipDao.getAll().size() + 1;
+        int id = tipDao.nextId();
         Tip tip = new Tip(id, title, url);
         tipDao.create(tip);
     }
