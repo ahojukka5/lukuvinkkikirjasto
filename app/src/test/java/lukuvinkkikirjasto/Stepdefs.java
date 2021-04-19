@@ -81,14 +81,32 @@ public class Stepdefs {
         assertTrue(outContent.toString().contains(expectedOutput));
     }
 
+    @Then("filtered results should contain {string} but not {string}")
+    public void filteredShouldContain(String expectedOutput, String notExpectedOutput) {
+        inputLines.add("menu");
+        inputLines.add("quit");
+        Scanner scanner = new Scanner(join(inputLines));
+        TipService tipService = new TipService(new JsonDao("test.txt"));
+
+        new ConsoleUi(scanner, tipService).start();
+
+        String allContents = outContent.toString();
+        String[] parts = allContents.split("Mitä otsikon täytyy sisältää?");
+
+        String contentsAfterFilter = parts[parts.length-1];
+
+        assertTrue(contentsAfterFilter.toString().contains(expectedOutput));
+        assertFalse(contentsAfterFilter.toString().contains(notExpectedOutput));
+    }
+
     /**
      * Add tip with title and url.
      */
     @Given("tip with title {string} and url {string} is created")
     public void tipWithTitleAndUrlIsCreated(String title, String url) {
         inputLines.add("add");
-        inputLines.add("title");
-        inputLines.add("url");
+        inputLines.add(title);
+        inputLines.add(url);
     }
 
     @Given("command markRead is selected$")
@@ -105,4 +123,15 @@ public class Stepdefs {
     public void operationIsConfirmed() {
         inputLines.add("k");
     }
+
+    @Given("command title is selected$")
+    public void commandFilterSelected() {
+        inputLines.add("title");
+    }
+
+    @When("filter {string} is entered")
+    public void filterIsEntered(String filter) {
+        inputLines.add(filter);
+    }
+
 }
