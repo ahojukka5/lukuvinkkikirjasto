@@ -1,22 +1,24 @@
 package lukuvinkkikirjasto;
 
-import io.cucumber.java.Before;
+import static org.junit.Assert.*;
+
 import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.io.PrintStream;
-import java.io.ByteArrayOutputStream;
-
-import static org.junit.Assert.*;
-
 import lukuvinkkikirjasto.dao.*;
 import lukuvinkkikirjasto.domain.*;
 import lukuvinkkikirjasto.ui.*;
 
+/**
+ * Step definitions.
+ */
 public class Stepdefs {
     private List<String> inputLines;
 
@@ -33,6 +35,9 @@ public class Stepdefs {
         return sb.toString();
     }
 
+    /**
+     * Setup.
+     */
     @Before
     public void setup() {
         System.setOut(new PrintStream(outContent));
@@ -61,6 +66,9 @@ public class Stepdefs {
         inputLines.add(url);
     }
 
+    /**
+     * Check that console is giving expected output.
+     */
     @Then("system will respond with {string}")
     public void systemWillRespondWith(String expectedOutput) {
         inputLines.add("menu");
@@ -73,6 +81,9 @@ public class Stepdefs {
         assertTrue(outContent.toString().contains(expectedOutput));
     }
 
+    /**
+     * Add tip with title and url.
+     */
     @Given("tip with title {string} and url {string} is created")
     public void tipWithTitleAndUrlIsCreated(String title, String url) {
         inputLines.add("add");
