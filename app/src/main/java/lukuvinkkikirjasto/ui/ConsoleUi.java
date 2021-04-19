@@ -1,13 +1,14 @@
 package lukuvinkkikirjasto.ui;
 
-import java.util.Scanner;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 import lukuvinkkikirjasto.domain.*;
 import lukuvinkkikirjasto.domain.matcher.Matcher;
 import lukuvinkkikirjasto.domain.matcher.TitleContains;
+
 /**
- * Text User Inferface
+ * Text User Inferface.
  */
 public class ConsoleUi {
     private final Scanner scanner;
@@ -18,6 +19,9 @@ public class ConsoleUi {
         this.tipService = tipService;
     }
 
+    /**
+     * Start Console UI.
+     */
     public void start() {
         while (true) {
             System.out.println("Komennot:");
@@ -59,6 +63,7 @@ public class ConsoleUi {
                     tipService.removeTip(tip);
                     System.out.println("Vinkki " + id + " poistettu!");
                 }
+                break;
             case "markread":
                 markRead();
                 break;
@@ -70,6 +75,9 @@ public class ConsoleUi {
         }
     }
 
+    /**
+     * Mark tip as read.
+     */
     public void markRead() {
         String confirmMsg = "Merkitäänkö vinkki id-numerolla %d ja otsikolla '%s' luetuksi? [k/e]";
         String errMsg = "Vinkkiä id-numerolla '%s' ei löytynyt!";
@@ -129,7 +137,7 @@ public class ConsoleUi {
             case "menu":
                 return;
             default:
-                System.out.println("Komentoa '" + cmd + "' ei ole");            
+                System.out.println("Komentoa '" + cmd + "' ei ole");
             }
         }
     }
