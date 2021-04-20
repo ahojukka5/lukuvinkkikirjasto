@@ -127,7 +127,10 @@ public class Stepdefs {
         inputLines.add("k");
     }
 
-    
+    @When("operation is cancelled")
+    public void operationIsCancelled() {
+        inputLines.add("e");
+    }
 
     @Given("command title is selected$")
     public void commandFilterSelected() {
@@ -164,6 +167,21 @@ public class Stepdefs {
         inputLines.add("unread");
     }
 
+    @When("command remove is selected")
+    public void commandRemoveSelected() {
+        inputLines.add("remove");
+    }
+
+    /**
+     * Remove tip with specified id from database.
+     */
+    @Given("tip with id {int} is removed")
+    public void removeTipWithId(int id) {
+        inputLines.add("remove");
+        inputLines.add("" + id);
+        inputLines.add("k");
+    }
+
     /**
      * Run program and count how many lines contain specified string.
      */
@@ -176,12 +194,37 @@ public class Stepdefs {
 
         new ConsoleUi(scanner, tipService).start();
 
+        int found = 0;
+
         for (String line : outContent.toString().split("\n")) {
             if (line.contains(s)) {
-                count--;
+                found++;
             }
         }
 
-        assertEquals(0, count);
+        assertEquals(count, found);
+    }
+
+    /**
+     * Run program and count how many lines match specified string.
+     */
+    @Then("output has line {string} {int} times")
+    public void outputHasLineTimes(String s, int count) {
+        inputLines.add("menu");
+        inputLines.add("quit");
+        Scanner scanner = new Scanner(join(inputLines));
+        TipService tipService = new TipService(new JsonDao("test.txt"));
+
+        new ConsoleUi(scanner, tipService).start();
+
+        int found = 0;
+
+        for (String line : outContent.toString().split("\n")) {
+            if (line.equals(s)) {
+                found++;
+            }
+        }
+
+        assertEquals(0, found);
     }
 }
