@@ -70,7 +70,7 @@ public class JsonDaoTest {
     public void idQueryTest() {
         provider = new FakeFilesystemProvider();
         dao = new JsonDao(PATH, provider);
-        assertEquals(0, dao.nextId());
         assertEquals(1, dao.nextId());
+        assertEquals(2, dao.nextId());
     }
 }

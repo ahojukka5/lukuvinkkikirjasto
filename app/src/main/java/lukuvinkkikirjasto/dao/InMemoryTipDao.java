@@ -12,6 +12,7 @@ public class InMemoryTipDao implements TipDao {
 
     public InMemoryTipDao() {
         this.tips = new ArrayList<Tip>();
+        this.id = 1;
     }
 
     @Override
