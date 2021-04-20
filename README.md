@@ -36,16 +36,19 @@ Ohjelman riippuvuuksien asennus ja ohjelman suoritus tapahtuu gradlella:
 Ohjelmassa on tekstikäyttöliittymä. Kun ohjelman käynnistää, se listaa eri komennot. Vaihtoehdot ovat
 
 - `add`
+- `remove`
 - `list`
+- `markRead`
 - `quit`
 
 ### Vinkin lisääminen
 
 Vinkin lisääminen tapahtuu kirjoittamalla `add`. Tämän jälkeen ohjelma kysyy ensin vinkin otsikon jonka jälkeen vinkin url-osoitteen.
 
-### Vinkkien listaaminen
+### Vinkkien listaaminen ja suodattaminen
 
-Vinkkien listaaminen tapahtuu kirjoittamalla `list`. Tuloste on (esimerkiksi)
+Vinkkien listaaminen tapahtuu kirjoittamalla `list`. Aluksi ohjelma tulostaa kaikkia lukuvinkit. 
+Tuloste on (esimerkiksi)
 
 ```text
 Id: 1
@@ -57,6 +60,14 @@ Id: 2
 Otsikko: Consistency models
 Url: https://dev.to/napicellatwit/consistency-models-52l
 ```
+Lukuvinkkejä voi suodattaa
+  - otsikon perusteella valitsemalla `title`
+    - kirjoita hakusana, kuten 'otsikk'
+  - luettujen perusteella valitsemalla `read`
+  - lukemattomien perusteella valitsemalla `unread`
+
+Tämän jälkeen ohjelma listaa lukuvinkit suodatusten perusteella. Suodattimia voi olla useampi yhtä aikaa päällä (aktiiviset suodattimet ovat näkyvillä). Voit tyhjentää suodattimet valitsemalla `clear`. Pääset takaisin päävalikkoon komennolla `menu`.
+
 
 ### Vinkkien poistaminen
 
@@ -74,6 +85,24 @@ Poistetaanko vinkki id-numerolla 1 ja otsikolla 'Merge sort algorithm'? [k/e]
 k
 Vinkki 1 poistettu!
 ```
+### Vinkkien merkkaaminen luetuksi
+Vinkkien merkkaaminen luetuksi tapahtuu kirjoittamalla `markRead`. Ohjelma listaa
+tietokannassa olevat lukuvinkit. Tämän jälkeen valitaan sen lukuvinkin id-numero
+joka halutaan merkata luetuksi ja varmistuksen jälkeen vinkki merkkautuu luetuksi.
+
+
+```text
+remove
+  1 Merge sort algorithm
+  2 Consistency models
+Valitse id-numero:
+1
+Merkitäänkö vinkki id-numerolla 1 ja otsikolla 'Merge sort algorithm' luetuksi? [k/e]
+k
+Vinkki 1 merkitty luetuksi!
+```
+
+
 
 ### Ohjelmasta poistuminen
 
