@@ -92,7 +92,7 @@ joka halutaan merkata luetuksi ja varmistuksen jälkeen vinkki merkkautuu luetuk
 
 
 ```text
-remove
+markRead
   1 Merge sort algorithm
   2 Consistency models
 Valitse id-numero:
