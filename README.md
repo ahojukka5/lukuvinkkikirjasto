@@ -16,14 +16,14 @@ Aiheen kuvaus: <https://ohjelmistotuotanto-hy-avoin.github.io/speksi/>
 
 ## Definition of done
 
-Scrumin määrittelyn mukainen definition of done sisältää:
-
-- user storyn määrittelyn,
-- suunnittelun,
-- toteutuksen,
-- automatisoitujen testien tekemisen,
-- integroinnin muuhun sovellukseen,
-- dokumentoinnin.
+- User storylle on määritelty hyväksymiskriteerit.
+- User story on jaettu teknisen tason työtehtäviksi.
+- Automatisoidut yksikkötestit on tehty.
+- Automatisoidut hyväksymistestit on tehty.
+- Testien rivikattavuus on vähintään 80 %.
+- Ohjelmakoodi on selkeää ja läpäisee automaattisen checkstyle-testin.
+- Ei-triviaalit muutokset ohjelmakoodiin on katselmoitu jonkun muun kuin
+  ohjelmakoodin kirjoittajan toimesta.
 
 ## Asennus- ja käyttöohje
 
