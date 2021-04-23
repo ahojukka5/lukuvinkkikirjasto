@@ -39,6 +39,9 @@ public class ConsoleUi {
             case "add":
                 add();
                 break;
+            case "edit":
+                editTip();
+                break;
             case "list":
                 listTips();
                 break;
@@ -72,6 +75,12 @@ public class ConsoleUi {
             System.out.println("Vinkkiä id-numerolla " + id + " ei löytynyt!");
         }
         return tip;
+    }
+
+    /**
+     * Edit tip.
+     */
+    public void editTip() {
     }
 
     /**
