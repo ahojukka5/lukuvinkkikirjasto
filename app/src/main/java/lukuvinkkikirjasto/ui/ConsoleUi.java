@@ -97,6 +97,21 @@ public class ConsoleUi {
                 tip.setValue(field, newValue);
             }
         }
+
+        // List all tags attached to tip and ask for replacement as a
+        // comma-separated list
+        String tags = String.join(", ", tip.getTags());
+        System.out.print(String.format("%s [%s]: ", "Tags", tags));
+        newValue = scanner.nextLine();
+        if (newValue.length() > 0) {
+            for (String tag : tip.getTags()) {
+                tip.removeTag(tag);
+            }
+            for (String tag : newValue.split(",")) {
+                tip.addTag(tag.trim());
+            }
+        }
+
         tipService.updateTip(tip);
     }
 
