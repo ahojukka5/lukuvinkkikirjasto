@@ -30,6 +30,7 @@ public class ConsoleUi {
             System.out.println("Komennot:");
             System.out.println("add - lisää vinkki");
             System.out.println("edit - muokkaa vinkkiä");
+            System.out.println("addTags - lisää vinkille tägejä");
             System.out.println("remove - poista vinkki");
             System.out.println("list - listaa ja suodata vinkkejä");
             System.out.println("markRead - merkitse vinkki luetuksi");
@@ -41,6 +42,8 @@ public class ConsoleUi {
                 break;
             case "edit":
                 editTip();
+            case "addTags":
+                addTags();
                 break;
             case "list":
                 listTips();
@@ -57,6 +60,12 @@ public class ConsoleUi {
                 System.out.println("Komentoa '" + cmd + "' ei ole");
             }
         }
+    }
+
+    /**
+     * Add tags to tip.
+     */
+    public void addTags() {
     }
 
     /**
