@@ -43,14 +43,8 @@ public class ConsoleUi {
                 listTips();
                 break;
             case "remove":
-                for (Tip tip : tipService.getAll()) {
-                    System.out.println(String.format("%3d %s", tip.getId(), tip.getTitle()));
-                }
-                System.out.println("Valitse id-numero:");
-                Integer id = Integer.parseInt(scanner.nextLine());
-                Tip tip = tipService.findTipById(id);
+                Tip tip = chooseTip();
                 if (tip == null) {
-                    System.out.println("Vinkkiä id-numerolla " + id + " ei löytynyt!");
                     break;
                 }
                 String msg = "Poistetaanko vinkki id-numerolla %d ja otsikolla '%s'? [k/e]";
@@ -58,7 +52,7 @@ public class ConsoleUi {
                 String answer = scanner.nextLine();
                 if (answer.equals("k")) {
                     tipService.removeTip(tip);
-                    System.out.println("Vinkki " + id + " poistettu!");
+                    System.out.println("Vinkki " + tip.getId() + " poistettu!");
                 }
                 break;
             case "markread":
@@ -70,6 +64,24 @@ public class ConsoleUi {
                 System.out.println("Komentoa '" + cmd + "' ei ole");
             }
         }
+    }
+
+    /**
+     * List all tips and asks to choose one tip based on id number.
+     *
+     * @return Tip or null if no tip found with that id number.
+     */
+    public Tip chooseTip() {
+        for (Tip tip : tipService.getAll()) {
+            System.out.println(String.format("%3d %s", tip.getId(), tip.getTitle()));
+        }
+        System.out.println("Valitse id-numero:");
+        Integer id = Integer.parseInt(scanner.nextLine());
+        Tip tip = tipService.findTipById(id);
+        if (tip == null) {
+            System.out.println("Vinkkiä id-numerolla " + id + " ei löytynyt!");
+        }
+        return tip;
     }
 
     /**
