@@ -66,6 +66,16 @@ public class ConsoleUi {
      * Add tags to tip.
      */
     public void addTags() {
+        Tip tip = chooseTip();
+        if (tip == null) {
+            return;
+        }
+        String tags = String.join(", ", tip.getTags());
+        System.out.println("Nykyiset tägit: " + tags);
+        System.out.print("Anna uusi tag: ");
+        String newTag = scanner.nextLine();
+        tip.addTag(newTag);
+        tipService.updateTip(tip);
     }
 
     /**
