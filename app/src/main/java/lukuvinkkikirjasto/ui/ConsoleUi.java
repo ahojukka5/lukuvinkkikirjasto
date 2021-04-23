@@ -85,6 +85,9 @@ public class ConsoleUi {
         if (tip == null) {
             return;
         }
+
+        // Go each field value one by one, and update with new values if
+        // non-empty string is given.
         String newValue;
         for (String field : tip.getFields()) {
             String fieldValue = tip.getValue(field);
