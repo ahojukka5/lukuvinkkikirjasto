@@ -42,7 +42,7 @@ public class ConsoleUi {
                 break;
             case "edit":
                 editTip();
-            case "addTags":
+            case "addtags":
                 addTags();
                 break;
             case "list":
