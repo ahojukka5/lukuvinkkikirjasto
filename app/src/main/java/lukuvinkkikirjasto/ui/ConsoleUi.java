@@ -81,6 +81,20 @@ public class ConsoleUi {
      * Edit tip.
      */
     public void editTip() {
+        Tip tip = chooseTip();
+        if (tip == null) {
+            return;
+        }
+        String newValue;
+        for (String field : tip.getFields()) {
+            String fieldValue = tip.getValue(field);
+            System.out.print(String.format("%s [%s]: ", field, fieldValue));
+            newValue = scanner.nextLine();
+            if (newValue.length() > 0) {
+                tip.setValue(field, newValue);
+            }
+        }
+        tipService.updateTip(tip);
     }
 
     /**
