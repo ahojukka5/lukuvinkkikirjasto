@@ -43,17 +43,7 @@ public class ConsoleUi {
                 listTips();
                 break;
             case "remove":
-                Tip tip = chooseTip();
-                if (tip == null) {
-                    break;
-                }
-                String msg = "Poistetaanko vinkki id-numerolla %d ja otsikolla '%s'? [k/e]";
-                System.out.println(String.format(msg, tip.getId(), tip.getTitle()));
-                String answer = scanner.nextLine();
-                if (answer.equals("k")) {
-                    tipService.removeTip(tip);
-                    System.out.println("Vinkki " + tip.getId() + " poistettu!");
-                }
+                removeTip();
                 break;
             case "markread":
                 markRead();
@@ -82,6 +72,23 @@ public class ConsoleUi {
             System.out.println("Vinkkiä id-numerolla " + id + " ei löytynyt!");
         }
         return tip;
+    }
+
+    /**
+     * Remove tip.
+     */
+    public void removeTip() {
+        Tip tip = chooseTip();
+        if (tip == null) {
+            return;
+        }
+        String msg = "Poistetaanko vinkki id-numerolla %d ja otsikolla '%s'? [k/e]";
+        System.out.println(String.format(msg, tip.getId(), tip.getTitle()));
+        String answer = scanner.nextLine();
+        if (answer.equals("k")) {
+            tipService.removeTip(tip);
+            System.out.println("Vinkki " + tip.getId() + " poistettu!");
+        }
     }
 
     /**
