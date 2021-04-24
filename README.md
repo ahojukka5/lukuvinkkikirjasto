@@ -112,3 +112,5 @@ Ohjelmasta poistuminen tapahtuu kirjoittamalla `quit`.
 [ci-url]: https://github.com/ahojukka5/lukuvinkkikirjasto/actions?query=workflow%3ACI+branch%3Amaster
 [coverage-img]: https://coveralls.io/repos/github/ahojukka5/lukuvinkkikirjasto/badge.svg?branch=master
 [coverage-url]: https://coveralls.io/github/ahojukka5/lukuvinkkikirjasto?branch=master
+
+
