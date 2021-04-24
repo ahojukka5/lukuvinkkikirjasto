@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import lukuvinkkikirjasto.domain.*;
+import lukuvinkkikirjasto.domain.matcher.HasTag;
 import lukuvinkkikirjasto.domain.matcher.Matcher;
 import lukuvinkkikirjasto.domain.matcher.Read;
 import lukuvinkkikirjasto.domain.matcher.TitleContains;
@@ -130,6 +131,7 @@ public class ConsoleUi {
             System.out.println("title - suodata otsikon perusteella");
             System.out.println("read - suodata luetut");
             System.out.println("unread - suodata lukemattomat");
+            System.out.println("tag - suodata tagin sisältäviä");
             System.out.println("clear - tyhjennä suodatukset " + filters.toString());
             System.out.println("menu - takaisin päävalikkoon");
 
@@ -145,6 +147,11 @@ public class ConsoleUi {
                 break;
             case "unread":
                 filters.add(new Unread());
+                break;
+            case "tag":
+                System.out.println("Minkä tagin vinkin tulee sisältää?");
+                String tag = scanner.nextLine().trim();
+                filters.add(new HasTag(tag));
                 break;
             case "clear":
                 filters.clear();
