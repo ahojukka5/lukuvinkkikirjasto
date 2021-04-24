@@ -13,6 +13,7 @@ public class Levenshtein implements Matcher {
 
     public Levenshtein(String str, int distance) {
         this.str = str.toLowerCase().trim();
+        this.distance = distance;
     }
 
     @Override
