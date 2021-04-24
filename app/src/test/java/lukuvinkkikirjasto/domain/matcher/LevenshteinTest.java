@@ -103,4 +103,12 @@ public class LevenshteinTest {
         Matcher m = new Levenshtein(query, 1);
         assertFalse(m.matches(tip));
     }
+
+    @Test
+    public void testSwappedLetters() {
+        String query = "heslinki";
+        Tip tip = new Tip(1, "helsinki", "a");
+        Matcher m = new Levenshtein(query, 2);
+        assertTrue(m.matches(tip));
+    }
 }
