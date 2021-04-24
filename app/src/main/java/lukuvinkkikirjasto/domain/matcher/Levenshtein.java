@@ -18,8 +18,10 @@ public class Levenshtein implements Matcher {
 
     @Override
     public boolean matches(Tip t) {
-        return distance(t.getTitle(), str)
-            <= distance + Math.abs(t.getTitle().length() - str.length());
+        String title = t.getTitle();
+        int allowance = title.length() > str.length() ? Math.abs(title.length() - str.length()) : 0;
+
+        return distance(title, str) <= distance + allowance;
     }
 
     static String tail(String s) {
