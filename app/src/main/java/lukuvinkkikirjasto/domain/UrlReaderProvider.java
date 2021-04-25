@@ -1,4 +1,4 @@
-package lukuvinkkikirjasto.dao; 
+package lukuvinkkikirjasto.domain; 
 import java.io.IOException;
 
 public interface UrlReaderProvider {

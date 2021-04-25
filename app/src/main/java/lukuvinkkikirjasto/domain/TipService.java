@@ -3,8 +3,6 @@ package lukuvinkkikirjasto.domain;
 import java.util.ArrayList;
 import java.util.List;
 import lukuvinkkikirjasto.dao.TipDao;
-import lukuvinkkikirjasto.dao.UrlReaderProvider;
-import lukuvinkkikirjasto.dao.UrlReaderWrapper;
 import lukuvinkkikirjasto.domain.Tip;
 import lukuvinkkikirjasto.domain.matcher.All;
 import lukuvinkkikirjasto.domain.matcher.And;
@@ -17,16 +15,16 @@ import java.io.IOException;
  */
 public class TipService {
     private TipDao tipDao;
-    private UrlReaderProvider urlReaderProvider;
+    private UrlReaderProvider urlReader;
 
     public TipService(TipDao tipDao) {
         this.tipDao = tipDao;
-        this.urlReaderProvider = new UrlReaderWrapper();
+        this.urlReader = new UrlReaderWrapper();
     }
 
-    public TipService(TipDao tipDao, UrlReaderProvider urlReaderProvider) {
+    public TipService(TipDao tipDao, UrlReaderProvider urlReader) {
         this.tipDao = tipDao;
-        this.urlReaderProvider = urlReaderProvider;
+        this.urlReader = urlReader;
     }
 
     /**
@@ -43,7 +41,7 @@ public class TipService {
 
     public Tip createTipFromUrl(String url) throws IOException {
         int id = tipDao.nextId();
-        String title = urlReaderProvider.getTitleFrom(url);
+        String title = urlReader.getTitleFrom(url);
 
         Tip tip = new Tip(id, title, url);
         tipDao.create(tip);
