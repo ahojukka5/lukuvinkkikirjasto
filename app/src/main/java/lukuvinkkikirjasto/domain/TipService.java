@@ -3,19 +3,30 @@ package lukuvinkkikirjasto.domain;
 import java.util.ArrayList;
 import java.util.List;
 import lukuvinkkikirjasto.dao.TipDao;
+import lukuvinkkikirjasto.dao.UrlReaderProvider;
+import lukuvinkkikirjasto.dao.UrlReaderWrapper;
 import lukuvinkkikirjasto.domain.Tip;
 import lukuvinkkikirjasto.domain.matcher.All;
 import lukuvinkkikirjasto.domain.matcher.And;
 import lukuvinkkikirjasto.domain.matcher.Matcher;
+import java.io.IOException;
+
 
 /**
  * TipService class.
  */
 public class TipService {
     private TipDao tipDao;
+    private UrlReaderProvider urlReaderProvider;
 
     public TipService(TipDao tipDao) {
         this.tipDao = tipDao;
+        this.urlReaderProvider = new UrlReaderWrapper();
+    }
+
+    public TipService(TipDao tipDao, UrlReaderProvider urlReaderProvider) {
+        this.tipDao = tipDao;
+        this.urlReaderProvider = urlReaderProvider;
     }
 
     /**
@@ -28,6 +39,15 @@ public class TipService {
         int id = tipDao.nextId();
         Tip tip = new Tip(id, title, url);
         tipDao.create(tip);
+    }
+
+    public Tip createTipFromUrl(String url) throws IOException {
+        int id = tipDao.nextId();
+        String title = urlReaderProvider.getTitleFrom(url);
+
+        Tip tip = new Tip(id, title, url);
+        tipDao.create(tip);
+        return tip;
     }
 
     public List<Tip> getAll() {
