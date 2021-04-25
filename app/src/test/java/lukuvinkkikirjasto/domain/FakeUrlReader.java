@@ -1,4 +1,5 @@
 package lukuvinkkikirjasto.domain;
+
 import java.io.IOException;
 
 class FakeUrlReader implements UrlReaderProvider {

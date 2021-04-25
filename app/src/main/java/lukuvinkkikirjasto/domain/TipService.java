@@ -1,5 +1,6 @@
 package lukuvinkkikirjasto.domain;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import lukuvinkkikirjasto.dao.TipDao;
@@ -7,7 +8,6 @@ import lukuvinkkikirjasto.domain.Tip;
 import lukuvinkkikirjasto.domain.matcher.All;
 import lukuvinkkikirjasto.domain.matcher.And;
 import lukuvinkkikirjasto.domain.matcher.Matcher;
-import java.io.IOException;
 
 
 /**
@@ -39,6 +39,11 @@ public class TipService {
         tipDao.create(tip);
     }
 
+    /**
+     * Create new tip with a title fetched from a url.
+     *
+     * @param url url of tip
+     */
     public Tip createTipFromUrl(String url) throws IOException {
         int id = tipDao.nextId();
         String title = urlReader.getTitleFrom(url);
