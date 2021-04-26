@@ -113,6 +113,7 @@ public class ConsoleUi {
         }
 
         tipService.updateTip(tip);
+        System.out.println("Vinkki " + tip.getId() + " päivitetty!");
     }
 
     /**
