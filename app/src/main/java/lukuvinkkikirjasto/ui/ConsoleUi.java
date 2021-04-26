@@ -31,7 +31,9 @@ public class ConsoleUi {
         while (true) {
             System.out.println("Komennot:");
             System.out.println("add - lisää vinkki");
+            System.out.println("addUrl - lisää vinkki pelkän urlin perusteella");
             System.out.println("edit - muokkaa vinkkiä");
+            System.out.println("addTags - lisää vinkille tägejä");
             System.out.println("remove - poista vinkki");
             System.out.println("list - listaa ja suodata vinkkejä");
             System.out.println("markRead - merkitse vinkki luetuksi");
@@ -41,8 +43,14 @@ public class ConsoleUi {
             case "add":
                 add();
                 break;
+            case "addurl":
+                addUrl();
+                break;
             case "edit":
                 editTip();
+                break;
+            case "addtags":
+                addTags();
                 break;
             case "list":
                 listTips();
@@ -59,6 +67,23 @@ public class ConsoleUi {
                 System.out.println("Komentoa '" + cmd + "' ei ole");
             }
         }
+    }
+
+    /**
+     * Add tags to tip.
+     */
+    public void addTags() {
+        Tip tip = chooseTip();
+        if (tip == null) {
+            return;
+        }
+        String tags = String.join(", ", tip.getTags());
+        System.out.println("Nykyiset tägit: " + tags);
+        System.out.print("Anna uusi tag: ");
+        String newTag = scanner.nextLine();
+        tip.addTag(newTag);
+        tipService.updateTip(tip);
+        System.out.println(String.format("Tägi '%s' on lisätty vinkille %d!", newTag, tip.getId()));
     }
 
     /**
@@ -180,6 +205,7 @@ public class ConsoleUi {
                 System.out.println("\nId: " + tip.getId());
                 System.out.println("Otsikko: " + tip.getTitle());
                 System.out.println("Url: " + tip.getUrl());
+                System.out.println("Tägit: " + String.join(", ", tip.getTags()));
                 if (tip.isRead()) {
                     System.out.println("Luettu: " + tip.getReadDate());
                 }
@@ -246,6 +272,38 @@ public class ConsoleUi {
         String url = scanner.nextLine();
 
         tipService.createTip(title, url);
+
+        System.out.println("Vinkki tallennettu!\n");
+    }
+
+    private void addUrl() {
+        System.out.println("Url?");
+        String url = scanner.nextLine();
+        Tip newTip;
+        String newTitle = "";
+
+        try {
+            newTip = tipService.createTipFromUrl(url);
+            System.out.println("Haettiin otsikko: " + newTip.getTitle());
+            System.out.println("Korvaa otsikko (tyhjä ohittaa): ");
+            newTitle = scanner.nextLine();
+
+        } catch (Exception e) {
+            newTip = tipService.createTip("", url);
+            System.out.println("Otsikon haku URL:sta epäonnistui:");
+            System.out.println(e);
+            System.out.println("Anna otsikko: ");
+            while (newTitle.length() < 3) {
+                System.out.println("Anna pidempi otsikko");
+                newTitle = scanner.nextLine();
+            }
+        }
+
+        if (!newTitle.equals("")) {
+            newTip.setValue("title", newTitle);
+            tipService.updateTip(newTip);
+            System.out.println("Otsikoksi päivitettiin: " + newTitle);
+        }
 
         System.out.println("Vinkki tallennettu!\n");
     }

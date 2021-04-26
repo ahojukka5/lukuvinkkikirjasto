@@ -18,7 +18,7 @@ public class TipServiceTest {
     @Before
     public void initialize() {
         dao = new InMemoryTipDao();
-        tipService = new TipService(dao);
+        tipService = new TipService(dao, new FakeUrlReader());
     }
 
     @Test
@@ -55,6 +55,13 @@ public class TipServiceTest {
 
         matcherList.add(new TitleContains("jepulis"));
         assertTrue(tipService.matchesAll(matcherList).size() == 0);
+    }
+
+    @Test
+    public void createTipFromUrlWorks() throws Exception {
+        tipService.createTipFromUrl("https://example.com");
+        assertTrue(tipService.getAll().get(0).getTitle().equals("FakeTitle"));
+        assertTrue(tipService.getAll().get(0).getUrl().equals("https://example.com"));
     }
     
 }

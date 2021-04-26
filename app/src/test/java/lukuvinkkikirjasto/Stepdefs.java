@@ -58,6 +58,11 @@ public class Stepdefs {
         inputLines.add("add");
     }
 
+    @Given("^command addUrl is selected$")
+    public void commandAddUrlSelected() throws Throwable {
+        inputLines.add("addUrl");
+    }
+
     @Given("^command list is selected$")
     public void commandListSelected() throws Throwable {
         inputLines.add("list");
@@ -69,6 +74,16 @@ public class Stepdefs {
         inputLines.add(url);
     }
 
+    @When("url {string} is entered")
+    public void validUrlIsEntered(String url) {
+        inputLines.add(url);
+    }
+
+    @When("enter is pressed")
+    public void enterPressed() {
+        inputLines.add("");
+    }
+
     /**
      * Check that console is giving expected output.
      */
@@ -77,7 +92,7 @@ public class Stepdefs {
         inputLines.add("menu");
         inputLines.add("quit");
         Scanner scanner = new Scanner(join(inputLines));
-        TipService tipService = new TipService(new JsonDao(FILENAME));
+        TipService tipService = new TipService(new JsonDao(FILENAME), new FakeUrlReader());
 
         new ConsoleUi(scanner, tipService).start();
 
@@ -123,6 +138,11 @@ public class Stepdefs {
     @When("id {string} is entered")
     public void idIsEntered(String id) {
         inputLines.add(id);
+    }
+
+    @When("title {string} is entered")
+    public void titleIsEntered(String title) {
+        inputLines.add(title);
     }
 
     @When("^operation is confirmed$")
@@ -183,6 +203,11 @@ public class Stepdefs {
     @When("command edit is selected")
     public void commandEditSelected() {
         inputLines.add("edit");
+    }
+
+    @When("command addTags is selected")
+    public void commandAddTagsSelected() {
+        inputLines.add("addTags");
     }
 
     @When("empty line is given")
