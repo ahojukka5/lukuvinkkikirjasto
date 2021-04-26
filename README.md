@@ -63,6 +63,8 @@ Url: https://dev.to/napicellatwit/consistency-models-52l
 Lukuvinkkejä voi suodattaa
   - otsikon perusteella valitsemalla `title`
     - kirjoita hakusana, kuten 'otsikk'
+    - haku löytää pienistä kirjoitusvirheistä huolimatta, esimerkiksi 'heslinki' tuottaa vinkit, joiden otsikossa on sana 'helsinki'
+  - otsikon perusteella täsmällisen osan sisältäviä valitsemalla `titleExact`
   - luettujen perusteella valitsemalla `read`
   - lukemattomien perusteella valitsemalla `unread`
 

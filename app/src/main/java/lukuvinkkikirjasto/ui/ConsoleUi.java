@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import lukuvinkkikirjasto.domain.*;
+import lukuvinkkikirjasto.domain.matcher.Levenshtein;
 import lukuvinkkikirjasto.domain.matcher.Matcher;
 import lukuvinkkikirjasto.domain.matcher.Read;
 import lukuvinkkikirjasto.domain.matcher.TitleContains;
@@ -109,6 +110,8 @@ public class ConsoleUi {
         List<Matcher> filters = new ArrayList<Matcher>();
 
         while (true) {
+            System.out.println("Aktiiviset suodatukset: " + filters.toString());
+
             for (Tip tip : tipService.matchesAll(filters)) {
                 System.out.println("\nId: " + tip.getId());
                 System.out.println("Otsikko: " + tip.getTitle());
@@ -121,14 +124,21 @@ public class ConsoleUi {
             }
             System.out.println("Komennot:");
             System.out.println("title - suodata otsikon perusteella");
+            System.out.println("titleExact - suodata otsikon perusteella tarkat osumat");
             System.out.println("read - suodata luetut");
             System.out.println("unread - suodata lukemattomat");
-            System.out.println("clear - tyhjennä suodatukset " + filters.toString());
+            System.out.println("undo - poista viimeisin suodatin");
+            System.out.println("clear - tyhjennä suodatukset ");
             System.out.println("menu - takaisin päävalikkoon");
 
             String cmd = scanner.nextLine().trim();
             switch (cmd) {
             case "title":
+                System.out.println("Mitä otsikosta haetaan?");
+                String srch = scanner.nextLine();
+                filters.add(new Levenshtein(srch, 2));
+                break;
+            case "titleExact":
                 System.out.println("Mitä otsikon täytyy sisältää?");
                 String titleFilter = scanner.nextLine().trim();
                 filters.add(new TitleContains(titleFilter));
@@ -138,6 +148,11 @@ public class ConsoleUi {
                 break;
             case "unread":
                 filters.add(new Unread());
+                break;
+            case "undo":
+                if (filters.size() > 0) {
+                    filters.remove(filters.size() - 1);
+                }
                 break;
             case "clear":
                 filters.clear();
