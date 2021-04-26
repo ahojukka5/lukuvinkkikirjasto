@@ -42,6 +42,7 @@ public class ConsoleUi {
                 break;
             case "addurl":
                 addUrl();
+                break;
             case "edit":
                 editTip();
                 break;
@@ -249,22 +250,23 @@ public class ConsoleUi {
         System.out.println("Url?");
         String url = scanner.nextLine();
         Tip newTip;
+        String newTitle = "";
 
         try {
             newTip = tipService.createTipFromUrl(url);
             System.out.println("Haettiin otsikko: " + newTip.getTitle());
             System.out.println("Korvaa otsikko (tyhjä ohittaa): ");
+            newTitle = scanner.nextLine();
+
         } catch (Exception e) {
             newTip = tipService.createTip("", url);
             System.out.println("Otsikon haku URL:sta epäonnistui:");
             System.out.println(e);
             System.out.println("Anna otsikko: ");
-        }
-
-        String newTitle = scanner.nextLine();
-        while (newTitle.length() < 3) {
-            System.out.println("Anna pidempi otsikko");
-            newTitle = scanner.nextLine();
+            while (newTitle.length() < 3) {
+                System.out.println("Anna pidempi otsikko");
+                newTitle = scanner.nextLine();
+            }
         }
 
         if (!newTitle.equals("")) {
