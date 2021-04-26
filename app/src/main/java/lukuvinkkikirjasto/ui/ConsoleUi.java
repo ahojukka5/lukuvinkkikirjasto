@@ -42,6 +42,7 @@ public class ConsoleUi {
                 break;
             case "edit":
                 editTip();
+                break;
             case "addtags":
                 addTags();
                 break;
@@ -76,7 +77,7 @@ public class ConsoleUi {
         String newTag = scanner.nextLine();
         tip.addTag(newTag);
         tipService.updateTip(tip);
-        System.out.println(String.format("Tägi '%s' lisätty vinkille %d!", newTag, tip.getId()));
+        System.out.println(String.format("Tägi '%s' on lisätty vinkille %d!", newTag, tip.getId()));
     }
 
     /**
