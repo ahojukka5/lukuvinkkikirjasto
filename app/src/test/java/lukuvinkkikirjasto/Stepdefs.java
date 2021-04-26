@@ -132,8 +132,13 @@ public class Stepdefs {
         inputLines.add("e");
     }
 
+    @Given("command title is selected")
+    public void commandFilterTitleSelected() {
+        inputLines.add("title");
+    }
+
     @Given("command titleExact is selected$")
-    public void commandFilterSelected() {
+    public void commandFilterTitleExactSelected() {
         inputLines.add("titleExact");
     }
 
