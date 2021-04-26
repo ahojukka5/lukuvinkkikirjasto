@@ -185,6 +185,11 @@ public class Stepdefs {
         inputLines.add("edit");
     }
 
+    @When("command addTags is selected")
+    public void commandAddTagsSelected() {
+        inputLines.add("addTags");
+    }
+
     @When("empty line is given")
     public void emptyLine() {
         inputLines.add("");
