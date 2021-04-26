@@ -180,6 +180,21 @@ public class Stepdefs {
         inputLines.add("remove");
     }
 
+    @When("command edit is selected")
+    public void commandEditSelected() {
+        inputLines.add("edit");
+    }
+
+    @When("empty line is given")
+    public void emptyLine() {
+        inputLines.add("");
+    }
+
+    @When("{string} is written to console")
+    public void writeString(String s) {
+        inputLines.add(s);
+    }
+
     /**
      * Remove tip with specified id from database.
      */
