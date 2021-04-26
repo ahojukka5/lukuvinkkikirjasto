@@ -8,6 +8,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ import lukuvinkkikirjasto.ui.*;
  */
 public class Stepdefs {
     private List<String> inputLines;
+    private static final String FILENAME = "test.txt";
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
@@ -43,6 +45,7 @@ public class Stepdefs {
         System.setOut(new PrintStream(outContent));
 
         inputLines = new ArrayList<>();
+        new File(FILENAME).delete();
     }
 
     @After
@@ -74,7 +77,7 @@ public class Stepdefs {
         inputLines.add("menu");
         inputLines.add("quit");
         Scanner scanner = new Scanner(join(inputLines));
-        TipService tipService = new TipService(new JsonDao("test.txt"));
+        TipService tipService = new TipService(new JsonDao(FILENAME));
 
         new ConsoleUi(scanner, tipService).start();
 
@@ -89,7 +92,7 @@ public class Stepdefs {
         inputLines.add("menu");
         inputLines.add("quit");
         Scanner scanner = new Scanner(join(inputLines));
-        TipService tipService = new TipService(new JsonDao("test.txt"));
+        TipService tipService = new TipService(new JsonDao(FILENAME));
 
         new ConsoleUi(scanner, tipService).start();
 
@@ -112,7 +115,7 @@ public class Stepdefs {
         inputLines.add(url);
     }
 
-    @Given("command markRead is selected$")
+    @Given("^command markRead is selected$")
     public void commandMarkReadSelected() {
         inputLines.add("markRead");
     }
@@ -122,19 +125,24 @@ public class Stepdefs {
         inputLines.add(id);
     }
 
-    @When("operation is confirmed")
+    @When("^operation is confirmed$")
     public void operationIsConfirmed() {
         inputLines.add("k");
     }
 
-    @When("operation is cancelled")
+    @When("^operation is cancelled$")
     public void operationIsCancelled() {
         inputLines.add("e");
     }
 
-    @Given("command title is selected$")
-    public void commandFilterSelected() {
+    @Given("^command title is selected$")
+    public void commandFilterTitleSelected() {
         inputLines.add("title");
+    }
+
+    @Given("command titleExact is selected$")
+    public void commandFilterTitleExactSelected() {
+        inputLines.add("titleExact");
     }
 
     @When("filter {string} is entered")
@@ -152,24 +160,39 @@ public class Stepdefs {
         inputLines.add("k");
     }
 
-    @Given("list mode is selected")
+    @Given("^list mode is selected$")
     public void selectListMode() {
         inputLines.add("list");
     }
 
-    @When("user filters by read tips")
+    @When("^user filters by read tips$")
     public void filterByReadTips() {
         inputLines.add("read");
     }
 
-    @When("user filters by unread tips")
+    @When("^user filters by unread tips$")
     public void filterByUnreadTips() {
         inputLines.add("unread");
     }
 
-    @When("command remove is selected")
+    @When("^command remove is selected$")
     public void commandRemoveSelected() {
         inputLines.add("remove");
+    }
+
+    @When("command edit is selected")
+    public void commandEditSelected() {
+        inputLines.add("edit");
+    }
+
+    @When("empty line is given")
+    public void emptyLine() {
+        inputLines.add("");
+    }
+
+    @When("{string} is written to console")
+    public void writeString(String s) {
+        inputLines.add(s);
     }
 
     /**
@@ -190,7 +213,7 @@ public class Stepdefs {
         inputLines.add("menu");
         inputLines.add("quit");
         Scanner scanner = new Scanner(join(inputLines));
-        TipService tipService = new TipService(new JsonDao("test.txt"));
+        TipService tipService = new TipService(new JsonDao(FILENAME));
 
         new ConsoleUi(scanner, tipService).start();
 
@@ -213,7 +236,7 @@ public class Stepdefs {
         inputLines.add("menu");
         inputLines.add("quit");
         Scanner scanner = new Scanner(join(inputLines));
-        TipService tipService = new TipService(new JsonDao("test.txt"));
+        TipService tipService = new TipService(new JsonDao(FILENAME));
 
         new ConsoleUi(scanner, tipService).start();
 
