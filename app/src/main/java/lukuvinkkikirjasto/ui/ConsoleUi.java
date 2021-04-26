@@ -198,6 +198,7 @@ public class ConsoleUi {
                 System.out.println("\nId: " + tip.getId());
                 System.out.println("Otsikko: " + tip.getTitle());
                 System.out.println("Url: " + tip.getUrl());
+                System.out.println("Tägit: " + String.join(", ", tip.getTags()));
                 if (tip.isRead()) {
                     System.out.println("Luettu: " + tip.getReadDate());
                 }
