@@ -51,6 +51,7 @@ public class Stepdefs {
     @After
     public void restoreStream() {
         System.setOut(originalOut);
+        outContent.reset();
     }
 
     @Given("^command add is selected$")
