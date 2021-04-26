@@ -19,7 +19,7 @@ public class TitleContains implements Matcher {
 
     @Override
     public String toString() {
-        return "Otsikko: " + query;
+        return "Otsikkossa täsmällinen osa: " + query;
     }
 
 }
