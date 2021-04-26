@@ -39,28 +39,7 @@ public class ConsoleUi {
                 add();
                 break;
             case "addurl":
-                System.out.println("Url?");
-                Tip tipFromUrl;
-
-                try {
-                    tipFromUrl = tipService.createTipFromUrl(scanner.nextLine());
-                } catch (Exception e) {
-                    System.out.println("Urlin haku epäonnistui");
-                    System.out.println(e);
-                    break;
-                }
-
-                System.out.println("Haettiin otsikko: " + tipFromUrl.getTitle());
-                System.out.println("Korvaa otsikko (tyhjä ohittaa): ");
-                String newTitle = scanner.nextLine();
-
-                if (!newTitle.equals("")) {
-                    tipFromUrl.setValue("title", newTitle);
-                    tipService.updateTip(tipFromUrl);
-                    System.out.println("Otsikoksi päivitettiin: " + newTitle);
-                }
-
-                System.out.println("Vinkki tallennettu!\n");
+                addUrl();
                 break;
             case "list":
                 listTips();
@@ -186,6 +165,31 @@ public class ConsoleUi {
         String url = scanner.nextLine();
 
         tipService.createTip(title, url);
+
+        System.out.println("Vinkki tallennettu!\n");
+    }
+
+    private void addUrl() {
+        System.out.println("Url?");
+        Tip tipFromUrl;
+
+        try {
+            tipFromUrl = tipService.createTipFromUrl(scanner.nextLine());
+        } catch (Exception e) {
+            System.out.println("Urlin haku epäonnistui");
+            System.out.println(e);
+            return;
+        }
+
+        System.out.println("Haettiin otsikko: " + tipFromUrl.getTitle());
+        System.out.println("Korvaa otsikko (tyhjä ohittaa): ");
+        String newTitle = scanner.nextLine();
+
+        if (!newTitle.equals("")) {
+            tipFromUrl.setValue("title", newTitle);
+            tipService.updateTip(tipFromUrl);
+            System.out.println("Otsikoksi päivitettiin: " + newTitle);
+        }
 
         System.out.println("Vinkki tallennettu!\n");
     }
