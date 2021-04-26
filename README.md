@@ -67,6 +67,20 @@ Vinkki 1 päivitetty!
 
 Tägit listataan pilkulla eroteltuna.
 
+### Tägien lisääminen vinkeille
+
+Vinkeille voi lisätä tägejä `addTags` komennolla. Komento kysyy id-numeron sekä lisättävän tagin jonka jälkeen uusi tagi lisätään vinkkiin.
+
+```text
+addTags
+  1 Consistency models
+Valitse id-numero:
+1
+Nykyiset tägit: web
+Anna uusi tag: youtube
+Tägi 'youtube' lisätty vinkille 1!
+```
+
 ### Vinkkien listaaminen ja suodattaminen
 
 Vinkkien listaaminen tapahtuu kirjoittamalla `list`. Aluksi ohjelma tulostaa kaikkia lukuvinkit. 
