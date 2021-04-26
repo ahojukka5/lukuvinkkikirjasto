@@ -181,6 +181,16 @@ public class Stepdefs {
         inputLines.add("k");
     }
 
+    /**
+     * Tag specified tip with given tag provided the program is in main menu.
+     */
+    @Given("tip with id {int} is tagged with {string}")
+    public void tagTip(int id, String tag) {
+        inputLines.add("addTags");
+        inputLines.add("" + id);
+        inputLines.add(tag);
+    }
+
     @Given("^list mode is selected$")
     public void selectListMode() {
         inputLines.add("list");
@@ -194,6 +204,11 @@ public class Stepdefs {
     @When("^user filters by unread tips$")
     public void filterByUnreadTips() {
         inputLines.add("unread");
+    }
+
+    @When("^user filters by tags$")
+    public void filterByTags() {
+        inputLines.add("tag");
     }
 
     @When("^command remove is selected$")

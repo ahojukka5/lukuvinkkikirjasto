@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import lukuvinkkikirjasto.domain.*;
-
 import lukuvinkkikirjasto.domain.matcher.HasTag;
 import lukuvinkkikirjasto.domain.matcher.Levenshtein;
 import lukuvinkkikirjasto.domain.matcher.Matcher;
