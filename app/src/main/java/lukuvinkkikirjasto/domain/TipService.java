@@ -33,10 +33,11 @@ public class TipService {
      * @param title title of tip
      * @param url url of tip
      */
-    public void createTip(String title, String url) {
+    public Tip createTip(String title, String url) {
         int id = tipDao.nextId();
         Tip tip = new Tip(id, title, url);
         tipDao.create(tip);
+        return tip;
     }
 
     /**
