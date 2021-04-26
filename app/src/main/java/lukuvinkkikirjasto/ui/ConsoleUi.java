@@ -76,6 +76,7 @@ public class ConsoleUi {
         String newTag = scanner.nextLine();
         tip.addTag(newTag);
         tipService.updateTip(tip);
+        System.out.println(String.format("Tägi '%s' lisätty vinkille %d!", newTag, tip.getId()));
     }
 
     /**
