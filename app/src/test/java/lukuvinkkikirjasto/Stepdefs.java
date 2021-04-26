@@ -2,13 +2,13 @@ package lukuvinkkikirjasto;
 
 import static org.junit.Assert.*;
 
-import java.io.File;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +22,10 @@ import lukuvinkkikirjasto.ui.*;
  */
 public class Stepdefs {
     private List<String> inputLines;
+    private static final String FILENAME = "test.txt";
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
-    private final static String FILENAME = "test.txt";
     
     // joins list into a string separated by line breaks
     String join(List<String> args) {
