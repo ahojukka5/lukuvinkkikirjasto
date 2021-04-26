@@ -3,7 +3,6 @@ package lukuvinkkikirjasto.domain.matcher;
 import java.lang.Math;
 import lukuvinkkikirjasto.domain.Tip;
 
-
 /**
  * Fuzzy title matcher.
  */
@@ -19,7 +18,7 @@ public class Levenshtein implements Matcher {
     @Override
     public boolean matches(Tip t) {
         String title = t.getTitle();
-        int allowance = title.length() > str.length() ? Math.abs(title.length() - str.length()) : 0;
+        int allowance = Math.max(title.length() - str.length(), 0);
 
         return distance(title, str) <= distance + allowance;
     }
