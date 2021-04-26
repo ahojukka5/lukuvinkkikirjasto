@@ -36,14 +36,7 @@ public class ConsoleUi {
             String cmd = scanner.nextLine().trim().toLowerCase();
             switch (cmd) {
             case "add":
-                System.out.println("Otsikko?");
-                String title = scanner.nextLine();
-                System.out.println("Url?");
-                String url = scanner.nextLine();
-
-                tipService.createTip(title, url);
-
-                System.out.println("Vinkki tallennettu!\n");
+                add();
                 break;
             case "addurl":
                 System.out.println("Url?");
@@ -180,5 +173,20 @@ public class ConsoleUi {
                 System.out.println("Komentoa '" + cmd + "' ei ole");
             }
         }
+    }
+    
+    private void add() {
+        System.out.println("Otsikko?");
+        String title = scanner.nextLine();
+        while (title.length() < 3) {
+            System.out.println("Anna pidempi otsikko");
+            title = scanner.nextLine();
+        }
+        System.out.println("Url?");
+        String url = scanner.nextLine();
+
+        tipService.createTip(title, url);
+
+        System.out.println("Vinkki tallennettu!\n");
     }
 }
