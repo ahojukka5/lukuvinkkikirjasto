@@ -2,6 +2,7 @@ package lukuvinkkikirjasto;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
@@ -24,6 +25,7 @@ public class Stepdefs {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
+    private final static String FILENAME = "test.txt";
     
     // joins list into a string separated by line breaks
     String join(List<String> args) {
@@ -43,6 +45,7 @@ public class Stepdefs {
         System.setOut(new PrintStream(outContent));
 
         inputLines = new ArrayList<>();
+        new File(FILENAME).delete();
     }
 
     @After
@@ -74,7 +77,7 @@ public class Stepdefs {
         inputLines.add("menu");
         inputLines.add("quit");
         Scanner scanner = new Scanner(join(inputLines));
-        TipService tipService = new TipService(new JsonDao("test.txt"));
+        TipService tipService = new TipService(new JsonDao(FILENAME));
 
         new ConsoleUi(scanner, tipService).start();
 
@@ -89,7 +92,7 @@ public class Stepdefs {
         inputLines.add("menu");
         inputLines.add("quit");
         Scanner scanner = new Scanner(join(inputLines));
-        TipService tipService = new TipService(new JsonDao("test.txt"));
+        TipService tipService = new TipService(new JsonDao(FILENAME));
 
         new ConsoleUi(scanner, tipService).start();
 
@@ -190,7 +193,7 @@ public class Stepdefs {
         inputLines.add("menu");
         inputLines.add("quit");
         Scanner scanner = new Scanner(join(inputLines));
-        TipService tipService = new TipService(new JsonDao("test.txt"));
+        TipService tipService = new TipService(new JsonDao(FILENAME));
 
         new ConsoleUi(scanner, tipService).start();
 
@@ -213,7 +216,7 @@ public class Stepdefs {
         inputLines.add("menu");
         inputLines.add("quit");
         Scanner scanner = new Scanner(join(inputLines));
-        TipService tipService = new TipService(new JsonDao("test.txt"));
+        TipService tipService = new TipService(new JsonDao(FILENAME));
 
         new ConsoleUi(scanner, tipService).start();
 
