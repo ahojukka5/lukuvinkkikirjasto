@@ -103,6 +103,7 @@ Lukuvinkkejä voi suodattaa
   - otsikon perusteella täsmällisen osan sisältäviä valitsemalla `titleExact`
   - luettujen perusteella valitsemalla `read`
   - lukemattomien perusteella valitsemalla `unread`
+  - vinkkeihin liittyvien tägien perusteella valitsemalla `tag`
 
 Tämän jälkeen ohjelma listaa lukuvinkit suodatusten perusteella. Suodattimia voi olla useampi yhtä aikaa päällä (aktiiviset suodattimet ovat näkyvillä). Voit tyhjentää suodattimet valitsemalla `clear`. Pääset takaisin päävalikkoon komennolla `menu`.
 
