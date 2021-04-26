@@ -36,6 +36,7 @@ Ohjelman riippuvuuksien asennus ja ohjelman suoritus tapahtuu gradlella:
 Ohjelmassa on tekstikäyttöliittymä. Kun ohjelman käynnistää, se listaa eri komennot. Vaihtoehdot ovat
 
 - `add`
+- `edit`
 - `remove`
 - `list`
 - `markRead`
@@ -44,6 +45,27 @@ Ohjelmassa on tekstikäyttöliittymä. Kun ohjelman käynnistää, se listaa eri
 ### Vinkin lisääminen
 
 Vinkin lisääminen tapahtuu kirjoittamalla `add`. Tämän jälkeen ohjelma kysyy ensin vinkin otsikon jonka jälkeen vinkin url-osoitteen.
+
+### Vinkin muokkaaminen
+
+Vinkin muokkaaminen tapahtuu kirjoittamalla `edit`. Tämän jälkeen ohjelma kysyy
+vinkin id-numeron, jonka syötettyään voidaan lukuvinkin kenttiä muokata yksi
+kerrallaan. Mikäli kenttää ei muokata, jätetään kenttä tyhjäksi eli painetaan
+vaan enteriä. Esimerkiksi vinkin "Consitency models" kirjoitusvirhe
+korjattaisiin seuraavasti:
+
+```text
+edit
+  1 Consitency models
+Valitse id-numero:
+1
+title [Consitency models]: Consistency models
+url [https://dev.to/napicellatwit/consistency-models-52l]:
+Tags [web, models]:
+Vinkki 1 päivitetty!
+```
+
+Tägit listataan pilkulla eroteltuna.
 
 ### Vinkkien listaaminen ja suodattaminen
 
