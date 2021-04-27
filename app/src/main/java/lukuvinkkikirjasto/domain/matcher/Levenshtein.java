@@ -17,7 +17,7 @@ public class Levenshtein implements Matcher {
 
     @Override
     public boolean matches(Tip t) {
-        String title = t.getTitle();
+        String title = t.getTitle().toLowerCase();
         int allowance = Math.max(title.length() - str.length(), 0);
 
         return distance(title, str) <= distance + allowance;
