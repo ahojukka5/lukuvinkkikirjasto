@@ -36,6 +36,7 @@ Ohjelman riippuvuuksien asennus ja ohjelman suoritus tapahtuu gradlella:
 Ohjelmassa on tekstikäyttöliittymä. Kun ohjelman käynnistää, se listaa eri komennot. Vaihtoehdot ovat
 
 - `add`
+- `addUrl`
 - `edit`
 - `remove`
 - `list`
@@ -45,6 +46,11 @@ Ohjelmassa on tekstikäyttöliittymä. Kun ohjelman käynnistää, se listaa eri
 ### Vinkin lisääminen
 
 Vinkin lisääminen tapahtuu kirjoittamalla `add`. Tämän jälkeen ohjelma kysyy ensin vinkin otsikon jonka jälkeen vinkin url-osoitteen.
+
+### Vinkin lisääminen urlin perusteella
+
+Vinkin lisääminen tapahtuu kirjoittamalla `addUrl`. Tämän jälkeen ohjelma kysyy url-osoitteen. Ohjelma hakee automaattisesti vinkin otsikoksi websivun otsikon.
+Tämän jälkeen haetun otsikon voi muuttaa tai hyväksyä jättämällä kentän tyhjäksi (eli painamalla enter).
 
 ### Vinkin muokkaaminen
 
