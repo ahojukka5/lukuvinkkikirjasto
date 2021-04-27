@@ -28,21 +28,32 @@ public class Levenshtein implements Matcher {
     }
 
     static int distance(String left, String right) {
-        if (left.length() == 0 || right.length() == 0) {
-            return Math.max(left.length(), right.length());
+        int llen = left.length();
+        int rlen = right.length();
+        int[][] d = new int[llen + 1][rlen + 1];
+
+        for (int l = 1; l <= llen; l++) {
+            d[l][0] = l;
         }
 
-        if (left.charAt(0) == right.charAt(0)) {
-            return distance(tail(left), tail(right));
+        for (int r = 1; r <= rlen; r++) {
+            d[0][r] = r;
         }
 
-        return 1 + Math.min(
-            Math.min(
-                distance(tail(left), right),
-                distance(left, tail(right))
-            ),
-            distance(tail(left), tail(right))
-        );
+        for (int l = 1; l <= llen; l++) {
+            for (int r = 1; r <= rlen; r++) {
+                int cost = left.charAt(l - 1) == right.charAt(r - 1) ? 0 : 1;
+                d[l][r] = Math.min(
+                    Math.min(
+                        d[l - 1][r] + 1,
+                        d[l][r - 1] + 1
+                    ),
+                    d[l - 1][r - 1] + cost
+                );
+            }
+        }
+
+        return d[llen][rlen];
     }
 
     @Override
