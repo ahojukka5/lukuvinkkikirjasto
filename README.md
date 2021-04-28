@@ -6,6 +6,9 @@
 Product backlog:
 <https://docs.google.com/spreadsheets/d/1zUi1pc9pQ-kz11Bn88Q34mbKgrZqrk1Bsj93MvS5I70/edit#gid=1>
 
+Loppuraportti:
+<https://docs.google.com/document/d/135_VJk9BmdaQidp9X9mCCURQbl2cAuYqvzr-aaYhixw/edit#>
+
 Miniprojektin ohjeet: <https://ohjelmistotuotanto-hy-avoin.github.io/miniprojekti/>
 
 Aiheen kuvaus: <https://ohjelmistotuotanto-hy-avoin.github.io/speksi/>
